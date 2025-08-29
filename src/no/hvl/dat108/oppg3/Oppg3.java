@@ -51,23 +51,17 @@ public class Oppg3 {
         Map<Double, List<Ansatt>> resultat = ansatte.stream() //Oppretter en HashMap av ansatte
                 .collect(groupingBy(Ansatt::getAarslonn)); //Putter de ansatte inn i en Map med lønn som nøkkel og ansatt som verdi
 
-        //g) forslag 1
+        //g)
         List<Ansatt> minstLonnede = resultat.entrySet().stream()
                 .min(Comparator.comparing(Map.Entry::getKey)) //finner de minste nøklene, altså de med den minste lønnen
                 .map(Map.Entry::getValue)
                 .orElse(Collections.emptyList()); //inn i liste
-        //g) forslag 2
-        List<Ansatt> minLonn = ansatte.stream()
-                .filter(p -> p.getAarslonn() < 600000) //Kan godt finne minste lønn med mellomlagring av en verdi
-                .toList();
-        
-        minLonn.forEach(System.out::println);
         
         //f)
         System.out.println();
         minstLonnede.forEach(System.out::println);
-
-        //g)
+        
+        //h)
         IntPredicate delbarPaa3eller5 = x -> x % 3 == 0 || x % 5 == 0;
 
         int delbarList = IntStream.rangeClosed(1,1000)
