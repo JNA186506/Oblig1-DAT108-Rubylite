@@ -46,12 +46,18 @@ public class Oppg3 {
                 .filter(a -> a.getAarslonn() > 800000));
 
         ansatte.forEach(System.out::println);
-        Map<Double, List<Ansatt>> resultat = ansatte.stream().collect(groupingBy(Ansatt::getAarslonn));
+        Map<Double, List<Ansatt>> resultat = ansatte.stream() //Oppretter en HashMap av ansatte
+                .collect(groupingBy(Ansatt::getAarslonn)); //Putter de ansatte inn i en Map med lønn som nøkkel og ansatt som verdi
 
         List<Ansatt> minstLonnede = resultat.entrySet().stream()
-                .min(Comparator.comparing(Map.Entry::getKey))
+                .min(Comparator.comparing(Map.Entry::getKey)) //finner de minste nøklene, altså de med den minste lønnen
                 .map(Map.Entry::getValue)
-                .orElse(Collections.emptyList());
+                .orElse(Collections.emptyList()); //inn i liste
+
+        List<Ansatt> minLonn = ansatte.stream()
+                .filter(p -> p.getAarslonn() < 600000)
+                .toList();
+
 
         System.out.println();
         minstLonnede.forEach(System.out::println);
@@ -63,14 +69,6 @@ public class Oppg3 {
                     .boxed()
                     .toList();
 
-        for (Integer d : delbarList) {
-            if (d % 10 == 0) {
-                System.out.println();
-            } else {
-                System.out.print(d + ", ");
-            }
-
-        }
     }
     private static double averageLonn(List<Ansatt> ansatte, Predicate<Ansatt> filter) {
         return ansatte.stream()
