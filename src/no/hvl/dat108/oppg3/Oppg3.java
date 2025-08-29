@@ -60,7 +60,9 @@ public class Oppg3 {
         List<Ansatt> minLonn = ansatte.stream()
                 .filter(p -> p.getAarslonn() < 600000) //Kan godt finne minste lønn med mellomlagring av en verdi
                 .toList();
-
+        
+        minLonn.forEach(System.out::println);
+        
         //f)
         System.out.println();
         minstLonnede.forEach(System.out::println);
@@ -68,11 +70,12 @@ public class Oppg3 {
         //g)
         IntPredicate delbarPaa3eller5 = x -> x % 3 == 0 || x % 5 == 0;
 
-        List<Integer> delbarList = IntStream.rangeClosed(1,1000)
+        int delbarList = IntStream.rangeClosed(1,1000)
                     .filter(delbarPaa3eller5)
-                    .boxed()
-                    .toList();
-
+                    .sum();
+        
+        System.out.println(delbarList);
+        
     }
 
     //c)
