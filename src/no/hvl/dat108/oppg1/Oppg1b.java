@@ -1,7 +1,6 @@
 package no.hvl.dat108.oppg1;
 
 import java.util.function.BinaryOperator;
-import java.util.function.Predicate;
 
 public class Oppg1b {
     public static void main(String[] args) {

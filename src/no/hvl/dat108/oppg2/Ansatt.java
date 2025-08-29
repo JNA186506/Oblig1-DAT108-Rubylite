@@ -1,5 +1,10 @@
 package no.hvl.dat108.oppg2;
 
+/*
+Vi bruker Ansatt som class, ikke som record slik at vi kan gjøre
+endringer på de ansatte.
+*/
+
 public class Ansatt {
 
     private String fornavn;

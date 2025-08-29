@@ -1,13 +1,11 @@
 package no.hvl.dat108.oppg2;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class Oppg2 {
 
-    private Kjonn kjonn;
     public static void main(String[] args) {
         List<Ansatt> ansatte = List.of(new Ansatt("Per", "Persen", Kjonn.MANN,"Regnskapsfører", 600000),
                 new Ansatt("Anne", "Lise", Kjonn.KVINNE, "Advokat", 800000),
@@ -31,12 +29,14 @@ public class Oppg2 {
 
     }
 
+    //Første metode for å gi alle mer lønn
     private static void lonnsoppgjor(List<Ansatt> ansatte, Function<Ansatt, Double> lonnsFu) {
         for (Ansatt a : ansatte) {
            a.setAarslonn(lonnsFu.apply(a));
         }
     }
 
+    //Polymorfisme: Andre metode for å gi noen spesifikke mer lønn
     private static void lonnsoppgjor(List<Ansatt> ansatte, Function<Ansatt, Double> lonnsFu,
                                      Predicate<Ansatt> kontraktFu) {
         for (Ansatt a : ansatte) {
