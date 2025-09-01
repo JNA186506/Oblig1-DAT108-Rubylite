@@ -73,11 +73,11 @@ public class Oppg3 {
 //                .orElse(Collections.emptyList()); //inn i liste
 //        minstLonnede.forEach(System.out::println);
 
-        Optional<Ansatt> minstLonnede1 = ansatte.stream()
-                    .min(Comparator.comparing(Ansatt::getAarslonn))
-                    .stream().findAny();
+        Optional<Ansatt> minstLonnede = ansatte.stream()
+                    .min(Comparator.comparing(Ansatt::getAarslonn));
 
-        minstLonnede1.ifPresent(System.out::println);
+        minstLonnede.ifPresent(System.out::println);
+
 
         //h)
         System.out.println("H)");
