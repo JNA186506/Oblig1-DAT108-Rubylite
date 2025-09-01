@@ -65,21 +65,27 @@ public class Oppg3 {
         
         //g)
         System.out.println("G)");
-        Map<Double, List<Ansatt>> resultat = ansatte.stream() //Oppretter en HashMap av ansatte
-                .collect(groupingBy(Ansatt::getAarslonn)); //Putter de ansatte inn i en Map med lønn som nøkkel og ansatt som verdi
-        List<Ansatt> minstLonnede = resultat.entrySet().stream()
-                .min(Comparator.comparing(Map.Entry::getKey)) //finner de minste nøklene, altså de med den minste lønnen
-                .map(Map.Entry::getValue)
-                .orElse(Collections.emptyList()); //inn i liste
-        minstLonnede.forEach(System.out::println);
-        
+//        Map<Double, List<Ansatt>> resultat = ansatte.stream() //Oppretter en HashMap av ansatte
+//                .collect(groupingBy(Ansatt::getAarslonn)); //Putter de ansatte inn i en Map med lønn som nøkkel og ansatt som verdi
+//        List<Ansatt> minstLonnede = resultat.entrySet().stream()
+//                .min(Comparator.comparing(Map.Entry::getKey)) //finner de minste nøklene, altså de med den minste lønnen
+//                .map(Map.Entry::getValue)
+//                .orElse(Collections.emptyList()); //inn i liste
+//        minstLonnede.forEach(System.out::println);
+
+        Optional<Ansatt> minstLonnede1 = ansatte.stream()
+                    .min(Comparator.comparing(Ansatt::getAarslonn))
+                    .stream().findAny();
+
+        minstLonnede1.ifPresent(System.out::println);
+
         //h)
         System.out.println("H)");
         IntPredicate delbarPaa3eller5 = x -> x % 3 == 0 || x % 5 == 0;
         int delbarList = IntStream.rangeClosed(1,1000)
                     .filter(delbarPaa3eller5)
                     .sum();
-        System.out.println(delbarList);
+        System.out.println("Summen av alle delbare mellom 1 og 1000 er: " + delbarList);
         
     }
     
