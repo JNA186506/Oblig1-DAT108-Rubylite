@@ -65,14 +65,6 @@ public class Oppg3 {
         
         //g)
         System.out.println("G)");
-//        Map<Double, List<Ansatt>> resultat = ansatte.stream() //Oppretter en HashMap av ansatte
-//                .collect(groupingBy(Ansatt::getAarslonn)); //Putter de ansatte inn i en Map med lønn som nøkkel og ansatt som verdi
-//        List<Ansatt> minstLonnede = resultat.entrySet().stream()
-//                .min(Comparator.comparing(Map.Entry::getKey)) //finner de minste nøklene, altså de med den minste lønnen
-//                .map(Map.Entry::getValue)
-//                .orElse(Collections.emptyList()); //inn i liste
-//        minstLonnede.forEach(System.out::println);
-
         Optional<Ansatt> minstLonnede = ansatte.stream()
                     .min(Comparator.comparing(Ansatt::getAarslonn));
 
