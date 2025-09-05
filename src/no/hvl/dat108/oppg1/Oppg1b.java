@@ -8,7 +8,7 @@ public class Oppg1b {
         int sum = beregn(1,2,addere);
         System.out.println(sum);
 
-        BinaryOperator<Integer> storsteAv = (a,b) -> Math.max(a,b);
+        BinaryOperator<Integer> storsteAv = Math::max;
         System.out.println(beregn(1,2,storsteAv));
 
         BinaryOperator<Integer> absDifferanse = (a,b) -> Math.abs(a-b);
