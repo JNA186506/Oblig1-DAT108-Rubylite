@@ -27,9 +27,9 @@ public class Oppg3 {
         
         //a)
         System.out.println("A)");
-        Stream<String> ansatteEtternavn = ansatte.stream()
+        Stream<String> aStream = ansatte.stream()
                 .map(Ansatt::getEtternavn);
-        ansatteEtternavn.forEach(System.out::println);
+        aStream.forEach(System.out::println);
         
         //b)
         System.out.println("B)");
